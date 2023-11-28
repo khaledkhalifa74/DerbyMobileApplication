@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "110230623618",
+    "project_id": "champions-8ca9d",
+    "storage_bucket": "champions-8ca9d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110230623618:android:7f07857c433d7d2894ab9b",
+        "android_client_info": {
+          "package_name": "com.example.champions"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDouvSZG_mUIgiC5XPedLOlwr_vz31H2Us"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
