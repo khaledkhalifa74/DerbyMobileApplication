@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class PlayerCard extends StatelessWidget {
-  String? playerImage;
-  String? playerName;
-  String? keyColor;
+  final String? playerImage;
+  final String? playerName;
+  final String? keyColor;
 
-  PlayerCard({
+  const PlayerCard({
     super.key,
     required this.playerImage,
     required this.playerName,
