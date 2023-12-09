@@ -23,11 +23,11 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(const DerbyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DerbyApp extends StatelessWidget {
+  const DerbyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@ import 'package:champions/global_components/primary_button.dart';
 import 'package:champions/global_helpers/constants.dart';
 import 'package:flutter/material.dart';
 
-class SelectLevelBottomSheet extends StatelessWidget {
+class SelectLevelBottomSheet extends StatefulWidget {
   final String widgetPush;
 
   SelectLevelBottomSheet({
@@ -11,6 +11,13 @@ class SelectLevelBottomSheet extends StatelessWidget {
     required this.widgetPush,
     this.selectedItem,
   });
+  String? selectedItem = '';
+
+  @override
+  State<SelectLevelBottomSheet> createState() => _SelectLevelBottomSheetState();
+}
+
+class _SelectLevelBottomSheetState extends State<SelectLevelBottomSheet> {
   bool _enabled = false;
 
   List<ButtonModel> items = [
@@ -18,7 +25,7 @@ class SelectLevelBottomSheet extends StatelessWidget {
     ButtonModel(text: AppStrings.midLevelBtn, id: AppStrings.midId),
     ButtonModel(text: AppStrings.hardLevelBtn, id: AppStrings.hardId),
   ];
-  String? selectedItem = '';
+
   String? idLevel;
 
   @override
@@ -51,11 +58,11 @@ class SelectLevelBottomSheet extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return LevelButton(
                       id: items[index].id!,
-                      isSelected: selectedItem == items[index].id,
+                      isSelected: widget.selectedItem == items[index].id,
                       text: items[index].text!,
                       onPressed: () {
                         setState(() {
-                          selectedItem = items[index].id!;
+                          widget.selectedItem = items[index].id!;
                           _enabled = true;
                         });
                       },
@@ -69,7 +76,7 @@ class SelectLevelBottomSheet extends StatelessWidget {
                   text: AppStrings.confirmLevelBtn,
                   isDisabled: !_enabled,
                   itemCallBack: () {
-                    Navigator.pushReplacementNamed(context, widgetPush, arguments: selectedItem ,
+                    Navigator.pushReplacementNamed(context, widget.widgetPush, arguments: widget.selectedItem ,
                     );
                   },
                 ),
