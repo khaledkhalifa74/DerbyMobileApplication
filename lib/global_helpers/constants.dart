@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -178,7 +179,6 @@ const kWhatsappIcon = 'assets/icons/whatsapp.svg';
 const kXIcon = 'assets/icons/x.svg';
 const kResetIcon = 'assets/icons/reset.svg';
 const kShowPlayerIcon = 'assets/icons/showPlayer.svg';
-
 const pauseIcon = Iconsax.pause5;
 
 class CustomIcons {
@@ -201,4 +201,102 @@ int generateRandomNumber(int max) {
   final randomNumber = randomNumbers[index];
   randomNumbers.removeAt(index);
   return randomNumber;
+}
+class FireBaseReferences{
+
+  static CollectionReference kEasyActingRef = FirebaseFirestore.instance
+      .collection(AppStrings.actingCollection)
+      .doc(AppStrings.actingDoc)
+      .collection(AppStrings.easyActingCollection);
+
+  static CollectionReference kMidActingRef = FirebaseFirestore.instance
+      .collection(AppStrings.actingCollection)
+      .doc(AppStrings.actingDoc)
+      .collection(AppStrings.midActingCollection);
+
+  static CollectionReference kHardActingRef = FirebaseFirestore.instance
+      .collection(AppStrings.actingCollection)
+      .doc(AppStrings.actingDoc)
+      .collection(AppStrings.hardActingCollection);
+
+
+  static CollectionReference kEasyAuctionRef = FirebaseFirestore.instance
+      .collection(AppStrings.auctionCollection)
+      .doc(AppStrings.auctionDoc)
+      .collection(AppStrings.easyAuctionCollection);
+
+  static CollectionReference kMidAuctionRef = FirebaseFirestore.instance
+      .collection(AppStrings.auctionCollection)
+      .doc(AppStrings.auctionDoc)
+      .collection(AppStrings.midAuctionCollection);
+
+  static CollectionReference kHardAuctionRef = FirebaseFirestore.instance
+      .collection(AppStrings.auctionCollection)
+      .doc(AppStrings.auctionDoc)
+      .collection(AppStrings.hardAuctionCollection);
+
+
+  static CollectionReference kEasyPasswordRef = FirebaseFirestore.instance
+      .collection(AppStrings.passwordCollection)
+      .doc(AppStrings.passwordDoc)
+      .collection(AppStrings.easyPasswordCollection);
+
+  static CollectionReference kMidPasswordRef = FirebaseFirestore.instance
+      .collection(AppStrings.passwordCollection)
+      .doc(AppStrings.passwordDoc)
+      .collection(AppStrings.midPasswordCollection);
+
+  static CollectionReference kHardPasswordRef = FirebaseFirestore.instance
+      .collection(AppStrings.passwordCollection)
+      .doc(AppStrings.passwordDoc)
+      .collection(AppStrings.hardPasswordCollection);
+
+
+  static CollectionReference kEasyStopwatchRef = FirebaseFirestore.instance
+      .collection(AppStrings.stopWatchCollection)
+      .doc(AppStrings.stopWatchDoc)
+      .collection(AppStrings.easyStopWatchCollection);
+
+  static CollectionReference kMidStopwatchRef = FirebaseFirestore.instance
+      .collection(AppStrings.stopWatchCollection)
+      .doc(AppStrings.stopWatchDoc)
+      .collection(AppStrings.midStopWatchCollection);
+
+  static CollectionReference kHardStopwatchRef = FirebaseFirestore.instance
+      .collection(AppStrings.stopWatchCollection)
+      .doc(AppStrings.stopWatchDoc)
+      .collection(AppStrings.hardStopWatchCollection);
+
+  static CollectionReference kEasyTeamRef = FirebaseFirestore.instance
+      .collection(AppStrings.teamCollection)
+      .doc(AppStrings.teamDoc)
+      .collection(AppStrings.easyTeamCollection);
+
+  static CollectionReference kMidTeamRef = FirebaseFirestore.instance
+      .collection(AppStrings.teamCollection)
+      .doc(AppStrings.teamDoc)
+      .collection(AppStrings.midTeamCollection);
+
+  static CollectionReference kHardTeamRef = FirebaseFirestore.instance
+      .collection(AppStrings.teamCollection)
+      .doc(AppStrings.teamDoc)
+      .collection(AppStrings.hardTeamCollection);
+
+
+  static CollectionReference kEasyWhoIamRef = FirebaseFirestore.instance
+      .collection(AppStrings.whoIamCollection)
+      .doc(AppStrings.whoIamDoc)
+      .collection(AppStrings.easyWhoIamCollection);
+
+  static CollectionReference kMidWhoIamRef = FirebaseFirestore.instance
+      .collection(AppStrings.whoIamCollection)
+      .doc(AppStrings.whoIamDoc)
+      .collection(AppStrings.midWhoIamCollection);
+
+  static CollectionReference kHardWhoIamRef = FirebaseFirestore.instance
+      .collection(AppStrings.whoIamCollection)
+      .doc(AppStrings.whoIamDoc)
+      .collection(AppStrings.hardWhoIamCollection);
+
+
 }

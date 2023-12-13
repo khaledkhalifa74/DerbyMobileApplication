@@ -1,10 +1,10 @@
-import 'package:champions/global_components/app_body.dart';
-import 'package:champions/global_components/app_header.dart';
-import 'package:champions/global_components/custom_circular_progress_indicator.dart';
-import 'package:champions/global_components/custom_content.dart';
-import 'package:champions/global_components/player_card.dart';
-import 'package:champions/global_components/primary_button.dart';
-import 'package:champions/global_components/secondary_button.dart';
+import 'package:champions/screens/global_components/app_body.dart';
+import 'package:champions/screens/global_components/app_header.dart';
+import 'package:champions/screens/global_components/custom_circular_progress_indicator.dart';
+import 'package:champions/screens/global_components/custom_content.dart';
+import 'package:champions/screens/global_components/player_card.dart';
+import 'package:champions/screens/global_components/primary_button.dart';
+import 'package:champions/screens/global_components/secondary_button.dart';
 import 'package:champions/global_helpers/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -20,22 +20,9 @@ class WhoIamHome extends StatefulWidget {
 }
 
 class _WhoIamHomeState extends State<WhoIamHome> {
-
-  CollectionReference easy = FirebaseFirestore.instance
-      .collection(AppStrings.whoIamCollection)
-      .doc(AppStrings.whoIamDoc)
-      .collection(AppStrings.easyWhoIamCollection);
-
-  CollectionReference mid = FirebaseFirestore.instance
-      .collection(AppStrings.whoIamCollection)
-      .doc(AppStrings.whoIamDoc)
-      .collection(AppStrings.midWhoIamCollection);
-
-  CollectionReference hard = FirebaseFirestore.instance
-      .collection(AppStrings.whoIamCollection)
-      .doc(AppStrings.whoIamDoc)
-      .collection(AppStrings.hardWhoIamCollection);
-
+  CollectionReference easy = FireBaseReferences.kEasyWhoIamRef;
+  CollectionReference mid = FireBaseReferences.kMidWhoIamRef;
+  CollectionReference hard = FireBaseReferences.kHardWhoIamRef;
   int currentIndex = 0;
   bool _enabled = true;
   int availableCount = 1;
@@ -44,7 +31,7 @@ class _WhoIamHomeState extends State<WhoIamHome> {
 
   @override
   void initState() {
-    randomNumbers =[];
+    randomNumbers = [];
     super.initState();
   }
 
@@ -56,16 +43,26 @@ class _WhoIamHomeState extends State<WhoIamHome> {
       stream: args == AppStrings.easyId
           ? easy.snapshots()
           : args == AppStrings.midId
-          ? mid.snapshots()
-          : hard.snapshots(),
+              ? mid.snapshots()
+              : hard.snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<ContentModel> items = [
-            ContentModel(content: snapshot.data!.docs[currentIndex][AppStrings.firstClueFBTitle]),
-            ContentModel(content: snapshot.data!.docs[currentIndex][AppStrings.secondClueFBTitle]),
-            ContentModel(content: snapshot.data!.docs[currentIndex][AppStrings.thirdClueFBTitle]),
-            ContentModel(content: snapshot.data!.docs[currentIndex][AppStrings.fourthClueFBTitle]),
-            ContentModel(content: snapshot.data!.docs[currentIndex][AppStrings.fifthClueFBTitle]),
+            ContentModel(
+                content: snapshot.data!.docs[currentIndex]
+                    [AppStrings.firstClueFBTitle]),
+            ContentModel(
+                content: snapshot.data!.docs[currentIndex]
+                    [AppStrings.secondClueFBTitle]),
+            ContentModel(
+                content: snapshot.data!.docs[currentIndex]
+                    [AppStrings.thirdClueFBTitle]),
+            ContentModel(
+                content: snapshot.data!.docs[currentIndex]
+                    [AppStrings.fourthClueFBTitle]),
+            ContentModel(
+                content: snapshot.data!.docs[currentIndex]
+                    [AppStrings.fifthClueFBTitle]),
           ];
           void increaseAvailableCount() {
             availableCount++;
@@ -74,9 +71,12 @@ class _WhoIamHomeState extends State<WhoIamHome> {
             }
             setState(() {});
           }
+
           WidgetsBinding.instance.addPostFrameCallback((_) {
             if (_controller.hasClients) {
-              _controller.animateTo(_controller.position.maxScrollExtent, duration: const Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
+              _controller.animateTo(_controller.position.maxScrollExtent,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn);
             } else {
               setState(() {});
             }
@@ -97,7 +97,8 @@ class _WhoIamHomeState extends State<WhoIamHome> {
                             controller: _controller,
                             children: [
                               SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.02,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.02,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(
@@ -105,11 +106,13 @@ class _WhoIamHomeState extends State<WhoIamHome> {
                                 ),
                                 child: Text(
                                   AppStrings.guideTitle,
-                                  style: Theme.of(context).textTheme.titleMedium,
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                 ),
                               ),
                               SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.03,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.03,
                               ),
                               ListView.builder(
                                 physics: const ScrollPhysics(),
@@ -143,8 +146,8 @@ class _WhoIamHomeState extends State<WhoIamHome> {
                                 itemCallBack: () {
                                   currentIndex = generateRandomNumber(
                                       snapshot.data!.docs.length);
-                                  availableCount=1;
-                                  _enabled=true;
+                                  availableCount = 1;
+                                  _enabled = true;
                                   setState(() {});
                                 },
                               ),
@@ -152,15 +155,15 @@ class _WhoIamHomeState extends State<WhoIamHome> {
                                 height: 24,
                               ),
                               PrimaryButton(
-                                text: AppStrings.nextGuideBtn,
-                                itemCallBack: () async {
-                                  if (availableCount < items.length) {
-                                    increaseAvailableCount();
-                                  }
-                                },
-                                isDisabled: availableCount==1 ? !_enabled
-                                    :!_enabled
-                              ),
+                                  text: AppStrings.nextGuideBtn,
+                                  itemCallBack: () async {
+                                    if (availableCount < items.length) {
+                                      increaseAvailableCount();
+                                    }
+                                  },
+                                  isDisabled: availableCount == 1
+                                      ? !_enabled
+                                      : !_enabled),
                               const SizedBox(
                                 height: 24,
                               ),
@@ -185,28 +188,34 @@ class _WhoIamHomeState extends State<WhoIamHome> {
                                           children: [
                                             Text(
                                               AppStrings.thePlayerIs,
-                                              style:
-                                              Theme.of(context).textTheme.bodyLarge,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge,
                                             ),
                                             SizedBox(
-                                              height:
-                                              MediaQuery.of(context).size.height *
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
                                                   0.1,
                                             ),
                                             PlayerCard(
-                                              playerImage: snapshot.data!.docs[currentIndex]
-                                              [AppStrings.imageFBTitle],
-                                              playerName: snapshot.data!.docs[currentIndex]
-                                              [AppStrings.nameFBTitle],
-                                              keyColor: snapshot.data!.docs[currentIndex]
-                                              [AppStrings.keyFBTitle],
+                                              playerImage: snapshot
+                                                      .data!.docs[currentIndex]
+                                                  [AppStrings.imageFBTitle],
+                                              playerName: snapshot
+                                                      .data!.docs[currentIndex]
+                                                  [AppStrings.nameFBTitle],
+                                              keyColor: snapshot
+                                                      .data!.docs[currentIndex]
+                                                  [AppStrings.keyFBTitle],
                                             ),
                                             const SizedBox(
                                               height: 32,
                                             ),
                                             SizedBox(
-                                              height:
-                                              MediaQuery.of(context).size.height *
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
                                                   0.04,
                                             ),
                                             PrimaryButton(
@@ -229,11 +238,12 @@ class _WhoIamHomeState extends State<WhoIamHome> {
                                     ),
                                     elevation: MaterialStateProperty.all(0),
                                     backgroundColor:
-                                    MaterialStateProperty.all(kWhiteColor),
+                                        MaterialStateProperty.all(kWhiteColor),
                                     side: MaterialStateProperty.all(
                                       const BorderSide(
                                         width: 1,
-                                        strokeAlign: BorderSide.strokeAlignCenter,
+                                        strokeAlign:
+                                            BorderSide.strokeAlignCenter,
                                         color: kSecondaryColor,
                                       ),
                                     ),
@@ -252,8 +262,8 @@ class _WhoIamHomeState extends State<WhoIamHome> {
                                             .textTheme
                                             .bodyLarge!
                                             .copyWith(
-                                          fontWeight: FontWeight.w400,
-                                        ),
+                                              fontWeight: FontWeight.w400,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -276,6 +286,7 @@ class _WhoIamHomeState extends State<WhoIamHome> {
     );
   }
 }
+
 class ContentModel {
   final String content;
 

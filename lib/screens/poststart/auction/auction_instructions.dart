@@ -1,9 +1,9 @@
-import 'package:champions/global_components/app_body.dart';
-import 'package:champions/global_components/app_header.dart';
-import 'package:champions/global_components/games_instructions.dart';
-import 'package:champions/global_components/select_level_bottom_sheet.dart';
+import 'package:champions/screens/global_components/app_body.dart';
+import 'package:champions/screens/global_components/app_header.dart';
+import 'package:champions/screens/global_components/games_instructions.dart';
+import 'package:champions/screens/global_components/select_level_bottom_sheet.dart';
 import 'package:champions/global_helpers/constants.dart';
-import 'package:champions/screens/auction/auction_home.dart';
+import 'package:champions/screens/poststart/auction/auction_home.dart';
 import 'package:flutter/material.dart';
 
 class AuctionInstructions extends StatelessWidget {

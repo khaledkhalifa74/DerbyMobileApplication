@@ -1,4 +1,4 @@
-import 'package:champions/global_components/custom_circular_progress_indicator.dart';
+import 'package:champions/screens/global_components/custom_circular_progress_indicator.dart';
 import 'package:champions/global_helpers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';

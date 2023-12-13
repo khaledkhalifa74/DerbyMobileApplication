@@ -1,9 +1,10 @@
-import 'package:champions/global_components/player_name.dart';
-import 'package:champions/global_components/primary_button.dart';
+import 'package:champions/screens/global_components/player_name.dart';
+import 'package:champions/screens/global_components/primary_button.dart';
 import 'package:champions/global_helpers/constants.dart';
 import 'package:flutter/material.dart';
 
-class AnswersBottomSheet extends StatelessWidget {
+class PlayersNamesBottomSheet extends StatelessWidget {
+  final String teamName;
   final String player1;
   final String player2;
   final String player3;
@@ -14,9 +15,11 @@ class AnswersBottomSheet extends StatelessWidget {
   final String player8;
   final String player9;
   final String player10;
+  final String player11;
 
-  const AnswersBottomSheet({
+  const PlayersNamesBottomSheet({
     super.key,
+    required this.teamName,
     required this.player1,
     required this.player2,
     required this.player3,
@@ -27,6 +30,7 @@ class AnswersBottomSheet extends StatelessWidget {
     required this.player8,
     required this.player9,
     required this.player10,
+    required this.player11,
   });
 
   @override
@@ -34,7 +38,7 @@ class AnswersBottomSheet extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(
         top: 32,
-        bottom: 48,
+        bottom: 40,
       ),
       width: MediaQuery.of(context).size.width,
       child: SingleChildScrollView(
@@ -42,7 +46,7 @@ class AnswersBottomSheet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              AppStrings.answersTitle,
+              teamName,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
             const SizedBox(
@@ -50,18 +54,24 @@ class AnswersBottomSheet extends StatelessWidget {
             ),
             Column(
               children: [
+                PlayerName(
+                  playerName: player1,
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    PlayerName(
-                      playerName: player1,
-                    ),
-                    const SizedBox(
-                      width: 24,
-                    ),
                     PlayerName(
                       playerName: player2,
                     ),
+                    const SizedBox(
+                      width: 24,
+                    ),
+                    PlayerName(
+                      playerName:player3,
+                    ),
                   ],
                 ),
                 const SizedBox(
@@ -70,48 +80,48 @@ class AnswersBottomSheet extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    PlayerName(
-                      playerName: player3,
-                    ),
-                    const SizedBox(
-                      width: 24,
-                    ),
                     PlayerName(
                       playerName: player4,
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                    const SizedBox(
+                      width: 24,
+                    ),
                     PlayerName(
                       playerName: player5,
                     ),
-                    const SizedBox(
-                      width: 24,
-                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     PlayerName(
                       playerName: player6,
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                    const SizedBox(
+                      width: 24,
+                    ),
                     PlayerName(
                       playerName: player7,
                     ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    PlayerName(
+                      playerName: player8,
+                    ),
                     const SizedBox(
                       width: 24,
                     ),
                     PlayerName(
-                      playerName: player8,
+                      playerName: player9,
                     ),
                   ],
                 ),
@@ -122,13 +132,13 @@ class AnswersBottomSheet extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     PlayerName(
-                      playerName: player9,
+                      playerName: player10,
                     ),
                     const SizedBox(
                       width: 24,
                     ),
                     PlayerName(
-                      playerName: player10,
+                      playerName: player11,
                     ),
                   ],
                 ),

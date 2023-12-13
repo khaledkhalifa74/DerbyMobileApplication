@@ -14,17 +14,14 @@ class CustomTimer extends StatefulWidget {
 
   final int startTime;
   int start;
-
   @override
   State<CustomTimer> createState() => _CustomTimerState();
 }
-
 class _CustomTimerState extends State<CustomTimer> {
   late AnimateIconController _animateIconController;
   Timer? _timer;
-  late int _start;
-
-  var _isTimerOn = false;
+  //late int _start;
+  bool? _isTimerOn;
 
   @override
   void initState() {
@@ -76,7 +73,12 @@ class _CustomTimerState extends State<CustomTimer> {
           backgroundColor: kSecondaryColor,
           onPressed: () {
             widget.start = widget.startTime;
-            setState(() {});
+            setState((){
+              _timer?.cancel();
+              if (_animateIconController.isEnd()) {
+                _animateIconController.animateToStart();
+              }
+            });
           },
           child: SvgPicture.asset(kResetIcon),
         ),

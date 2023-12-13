@@ -1,16 +1,15 @@
-import 'package:champions/global_components/app_body.dart';
-import 'package:champions/global_components/app_header.dart';
-import 'package:champions/global_components/games_instructions.dart';
-import 'package:champions/global_components/select_level_bottom_sheet.dart';
+import 'package:champions/screens/global_components/app_body.dart';
+import 'package:champions/screens/global_components/app_header.dart';
+import 'package:champions/screens/global_components/games_instructions.dart';
+import 'package:champions/screens/global_components/select_level_bottom_sheet.dart';
 import 'package:champions/global_helpers/constants.dart';
-import 'package:champions/screens/acting/acting_home.dart';
+import 'package:champions/screens/poststart/team/team_home.dart';
 import 'package:flutter/material.dart';
 
-class ActingInstructions extends StatelessWidget {
-   const ActingInstructions({super.key});
+class TeamInstructions extends StatelessWidget {
+  const TeamInstructions({super.key});
 
-  static String id = 'ActingInstructions';
-
+  static String id = 'TeamInstructions';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,18 +17,18 @@ class ActingInstructions extends StatelessWidget {
       body: Column(
         children: [
           const AppHeader(
-            title: AppStrings.actingTitle,
+            title: AppStrings.teamTitle,
           ),
           Expanded(
             child: AppBody(
               widget: GamesInstructions(
-                image: kActingImage,
-                instruction1: AppStrings.actingInstruction1,
-                instruction2: AppStrings.actingInstruction2,
+                image: kTeamImage,
+                instruction1: AppStrings.teamInstruction1,
+                instruction2: AppStrings.teamInstruction2,
                 bullet3: '• ',
-                instruction3: AppStrings.actingInstruction3,
+                instruction3: AppStrings.teamInstruction3,
                 bullet4: '• ',
-                instruction4: AppStrings.actingInstruction4,
+                instruction4: AppStrings.teamInstruction4,
                 itemCallBack: () {
                   showModalBottomSheet(
                     elevation: 0,
@@ -37,7 +36,7 @@ class ActingInstructions extends StatelessWidget {
                     backgroundColor: kWhiteColor,
                     context: context,
                     builder: (context) => SelectLevelBottomSheet(
-                      widgetPush: ActingHome.id,
+                      widgetPush: TeamHome.id,
                     ),
                   );
                 },

@@ -1,37 +1,32 @@
-import 'package:champions/global_components/level_button.dart';
-import 'package:champions/global_components/primary_button.dart';
+import 'package:champions/screens/global_components/level_button.dart';
+import 'package:champions/screens/global_components/primary_button.dart';
 import 'package:champions/global_helpers/constants.dart';
 import 'package:flutter/material.dart';
 
 class SelectLevelBottomSheet extends StatefulWidget {
-  final String widgetPush;
-
-  SelectLevelBottomSheet({
+  const SelectLevelBottomSheet({
     super.key,
     required this.widgetPush,
-    this.selectedItem,
   });
-  String? selectedItem = '';
+  final String widgetPush;
 
   @override
   State<SelectLevelBottomSheet> createState() => _SelectLevelBottomSheetState();
 }
 
 class _SelectLevelBottomSheetState extends State<SelectLevelBottomSheet> {
-  bool _enabled = false;
 
   List<ButtonModel> items = [
     ButtonModel(text: AppStrings.easyLevelBtn, id: AppStrings.easyId),
     ButtonModel(text: AppStrings.midLevelBtn, id: AppStrings.midId),
     ButtonModel(text: AppStrings.hardLevelBtn, id: AppStrings.hardId),
   ];
-
+  String? selectedItem = '';
+  bool _enabled = false;
   String? idLevel;
 
   @override
   Widget build(BuildContext context) {
-
-
     return StatefulBuilder(
       builder: (BuildContext context, void Function(void Function()) setState) {
         return Padding(
@@ -58,11 +53,11 @@ class _SelectLevelBottomSheetState extends State<SelectLevelBottomSheet> {
                   itemBuilder: (context, index) {
                     return LevelButton(
                       id: items[index].id!,
-                      isSelected: widget.selectedItem == items[index].id,
+                      isSelected: selectedItem == items[index].id,
                       text: items[index].text!,
                       onPressed: () {
                         setState(() {
-                          widget.selectedItem = items[index].id!;
+                          selectedItem = items[index].id!;
                           _enabled = true;
                         });
                       },
@@ -76,7 +71,10 @@ class _SelectLevelBottomSheetState extends State<SelectLevelBottomSheet> {
                   text: AppStrings.confirmLevelBtn,
                   isDisabled: !_enabled,
                   itemCallBack: () {
-                    Navigator.pushReplacementNamed(context, widget.widgetPush, arguments: widget.selectedItem ,
+                    Navigator.pushReplacementNamed(
+                      context,
+                      widget.widgetPush,
+                      arguments: selectedItem,
                     );
                   },
                 ),
@@ -88,6 +86,7 @@ class _SelectLevelBottomSheetState extends State<SelectLevelBottomSheet> {
     );
   }
 }
+
 class ButtonModel {
   final String? text;
   final String? id;

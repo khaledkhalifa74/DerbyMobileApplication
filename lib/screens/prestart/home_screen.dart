@@ -1,13 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:champions/global_components/custom_contact.dart';
-import 'package:champions/global_components/home_card.dart';
+import 'package:champions/screens/global_components/custom_contact.dart';
+import 'package:champions/screens/global_components/home_card.dart';
 import 'package:champions/global_helpers/constants.dart';
-import 'package:champions/screens/acting/instructions.dart';
-import 'package:champions/screens/auction/instructions.dart';
-import 'package:champions/screens/password_challenge/instructions.dart';
-import 'package:champions/screens/stopwatch/instructions.dart';
-import 'package:champions/screens/team/instructions.dart';
-import 'package:champions/screens/who_iam/instructions.dart';
+import 'package:champions/screens/poststart/acting/acting_instructions.dart';
+import 'package:champions/screens/poststart/auction/auction_instructions.dart';
+import 'package:champions/screens/poststart/password_challenge/password_instructions.dart';
+import 'package:champions/screens/poststart/stopwatch/stopwatch_instructions.dart';
+import 'package:champions/screens/poststart/team/team_instructions.dart';
+import 'package:champions/screens/poststart/who_iam/who_iam_instructions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

@@ -1,4 +1,4 @@
-import 'package:champions/global_components/primary_button.dart';
+import 'package:champions/screens/global_components/primary_button.dart';
 import 'package:champions/global_helpers/constants.dart';
 import 'package:flutter/material.dart';
 

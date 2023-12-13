@@ -1,8 +1,8 @@
-import 'package:champions/global_components/app_body.dart';
-import 'package:champions/global_components/app_header.dart';
-import 'package:champions/global_components/custom_circular_progress_indicator.dart';
-import 'package:champions/global_components/player_card.dart';
-import 'package:champions/global_components/primary_button.dart';
+import 'package:champions/screens/global_components/app_body.dart';
+import 'package:champions/screens/global_components/app_header.dart';
+import 'package:champions/screens/global_components/custom_circular_progress_indicator.dart';
+import 'package:champions/screens/global_components/player_card.dart';
+import 'package:champions/screens/global_components/primary_button.dart';
 import 'package:champions/global_helpers/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -17,23 +17,14 @@ class AuctionHome extends StatefulWidget {
 }
 
 class _AuctionHomeState extends State<AuctionHome> {
-  CollectionReference easy = FirebaseFirestore.instance
-      .collection(AppStrings.auctionCollection)
-      .doc(AppStrings.auctionDoc)
-      .collection(AppStrings.easyAuctionCollection);
-  CollectionReference mid = FirebaseFirestore.instance
-      .collection(AppStrings.auctionCollection)
-      .doc(AppStrings.auctionDoc)
-      .collection(AppStrings.midAuctionCollection);
-  CollectionReference hard = FirebaseFirestore.instance
-      .collection(AppStrings.auctionCollection)
-      .doc(AppStrings.auctionDoc)
-      .collection(AppStrings.hardAuctionCollection);
+  CollectionReference easy = FireBaseReferences.kEasyAuctionRef;
+  CollectionReference mid = FireBaseReferences.kMidAuctionRef;
+  CollectionReference hard = FireBaseReferences.kHardAuctionRef;
   int currentIndex = 0;
 
   @override
   void initState() {
-    randomNumbers =[];
+    randomNumbers = [];
     super.initState();
   }
 
@@ -91,7 +82,8 @@ class _AuctionHomeState extends State<AuctionHome> {
                             child: PrimaryButton(
                               text: AppStrings.nextPlayerBtn,
                               itemCallBack: () {
-                                currentIndex = generateRandomNumber(snapshot.data!.docs.length);
+                                currentIndex = generateRandomNumber(
+                                    snapshot.data!.docs.length);
                                 setState(() {});
                               },
                             ),

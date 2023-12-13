@@ -1,15 +1,16 @@
-import 'package:champions/global_components/app_body.dart';
-import 'package:champions/global_components/app_header.dart';
-import 'package:champions/global_components/games_instructions.dart';
-import 'package:champions/global_components/select_level_bottom_sheet.dart';
+import 'package:champions/screens/global_components/app_body.dart';
+import 'package:champions/screens/global_components/app_header.dart';
+import 'package:champions/screens/global_components/games_instructions.dart';
+import 'package:champions/screens/global_components/select_level_bottom_sheet.dart';
 import 'package:champions/global_helpers/constants.dart';
-import 'package:champions/screens/who_iam/who_iam_home.dart';
+import 'package:champions/screens/poststart/stopwatch/stopwatch_home.dart';
 import 'package:flutter/material.dart';
 
-class WhoIamInstructions extends StatelessWidget {
-  const WhoIamInstructions({super.key});
+class StopwatchInstructions extends StatelessWidget {
+  const StopwatchInstructions({super.key});
 
-  static String id = 'WhoIamInstructions';
+  static String id = 'StopwatchInstructions';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,14 +18,14 @@ class WhoIamInstructions extends StatelessWidget {
       body: Column(
         children: [
           const AppHeader(
-            title: AppStrings.whoIamTitle,
+            title: AppStrings.stopwatchTitle,
           ),
           Expanded(
             child: AppBody(
               widget: GamesInstructions(
-                image: kWhoIamImage,
-                instruction1: AppStrings.whoIamInstruction1,
-                instruction2: AppStrings.whoIamInstruction2,
+                image: kStopwatchImage,
+                instruction1: AppStrings.stopwatchInstruction1,
+                instruction2: AppStrings.stopwatchInstruction2,
                 itemCallBack: () {
                   showModalBottomSheet(
                     elevation: 0,
@@ -32,7 +33,7 @@ class WhoIamInstructions extends StatelessWidget {
                     backgroundColor: kWhiteColor,
                     context: context,
                     builder: (context) => SelectLevelBottomSheet(
-                      widgetPush: WhoIamHome.id,
+                      widgetPush: StopwatchHome.id,
                     ),
                   );
                 },
