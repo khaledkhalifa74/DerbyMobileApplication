@@ -96,7 +96,7 @@ class _AuctionHomeState extends State<AuctionHome> {
               ),
             );
           } else {
-            return const Center(child: CustomCircularProgressIndicator());
+            return const Center(child: CustomCircularProgressIndicator(color: kWhiteColor,));
           }
         });
   }

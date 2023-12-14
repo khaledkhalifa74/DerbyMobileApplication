@@ -20,9 +20,7 @@ class CustomTimer extends StatefulWidget {
 class _CustomTimerState extends State<CustomTimer> {
   late AnimateIconController _animateIconController;
   Timer? _timer;
-  //late int _start;
   bool? _isTimerOn;
-
   @override
   void initState() {
     widget.start = widget.startTime;

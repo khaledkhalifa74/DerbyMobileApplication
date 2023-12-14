@@ -137,7 +137,7 @@ class _StopwatchHomeState extends State<StopwatchHome> {
             ),
           );
         } else {
-          return const Center(child: CustomCircularProgressIndicator());
+          return const Center(child: CustomCircularProgressIndicator(color: kWhiteColor,));
         }
       },
     );

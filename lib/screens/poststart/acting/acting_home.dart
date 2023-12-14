@@ -113,7 +113,7 @@ class _ActingHomeState extends State<ActingHome> {
             ),
           );
         } else {
-          return const Center(child: CustomCircularProgressIndicator());
+          return const Center(child: CustomCircularProgressIndicator(color: kWhiteColor,));
         }
       },
     );

@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:champions/screens/global_components/app_body.dart';
 import 'package:champions/screens/global_components/app_header.dart';
 import 'package:champions/screens/global_components/custom_circular_progress_indicator.dart';
@@ -6,6 +5,7 @@ import 'package:champions/screens/global_components/players_names_bottom_sheet.d
 import 'package:champions/screens/global_components/primary_button.dart';
 import 'package:champions/screens/global_components/secondary_button.dart';
 import 'package:champions/global_helpers/constants.dart';
+import 'package:champions/screens/global_components/team_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -59,33 +59,9 @@ class _TeamHomeState extends State<TeamHome> {
                                 height:
                                     MediaQuery.of(context).size.height * 0.04,
                               ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.22,
-                                child: CachedNetworkImage(
-                                  imageUrl: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.imageFBTitle],
-                                  imageBuilder: (context, imageProvider) =>
-                                      Container(
-                                    margin: const EdgeInsets.symmetric(
-                                      horizontal: 32,
-                                    ),
-                                    width: MediaQuery.of(context).size.width,
-                                    height: MediaQuery.of(context).size.height *
-                                        0.22,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(28),
-                                        image: DecorationImage(
-                                          image: imageProvider,
-                                          fit: BoxFit.fill,
-                                        )),
-                                  ),
-                                  placeholder: (context, url) =>
-                                      const CustomCircularProgressIndicator(),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
-                                ),
+                              TeamImage(
+                                imageUrl: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.imageFBTitle],
                               ),
                               SizedBox(
                                 height:
@@ -162,7 +138,10 @@ class _TeamHomeState extends State<TeamHome> {
             ),
           );
         } else {
-          return const Center(child: CustomCircularProgressIndicator());
+          return const Center(
+              child: CustomCircularProgressIndicator(
+            color: kWhiteColor,
+          ));
         }
       },
     );

@@ -1,5 +1,6 @@
 import 'package:champions/screens/global_components/custom_circular_progress_indicator.dart';
 import 'package:champions/global_helpers/constants.dart';
+import 'package:champions/screens/global_components/error_message.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -57,8 +58,8 @@ class PlayerCard extends StatelessWidget {
                 child: CachedNetworkImage(
                   imageUrl: playerImage!,
                   placeholder: (context, url) =>
-                      const CustomCircularProgressIndicator(),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                      const CustomCircularProgressIndicator(color: kWhiteColor,),
+                  errorWidget: (context, url, error) => const ErrorMessage(),
                   width: MediaQuery.of(context).size.width * 0.7,
                   height: MediaQuery.of(context).size.height * 0.4,
                 ),

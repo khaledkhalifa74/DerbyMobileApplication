@@ -2,13 +2,12 @@ import 'package:champions/screens/global_components/app_body.dart';
 import 'package:champions/screens/global_components/app_header.dart';
 import 'package:champions/screens/global_components/custom_circular_progress_indicator.dart';
 import 'package:champions/screens/global_components/custom_content.dart';
-import 'package:champions/screens/global_components/player_card.dart';
 import 'package:champions/screens/global_components/primary_button.dart';
 import 'package:champions/screens/global_components/secondary_button.dart';
 import 'package:champions/global_helpers/constants.dart';
+import 'package:champions/screens/global_components/show_player_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class WhoIamHome extends StatefulWidget {
   const WhoIamHome({super.key});
@@ -171,102 +170,13 @@ class _WhoIamHomeState extends State<WhoIamHome> {
                                 padding: const EdgeInsets.only(
                                   bottom: 32,
                                 ),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    showModalBottomSheet(
-                                      elevation: 0,
-                                      isScrollControlled: true,
-                                      backgroundColor: kWhiteColor,
-                                      context: context,
-                                      builder: (context) => Padding(
-                                        padding: const EdgeInsets.only(
-                                          top: 32,
-                                          bottom: 48,
-                                        ),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Text(
-                                              AppStrings.thePlayerIs,
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge,
-                                            ),
-                                            SizedBox(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.1,
-                                            ),
-                                            PlayerCard(
-                                              playerImage: snapshot
-                                                      .data!.docs[currentIndex]
-                                                  [AppStrings.imageFBTitle],
-                                              playerName: snapshot
-                                                      .data!.docs[currentIndex]
-                                                  [AppStrings.nameFBTitle],
-                                              keyColor: snapshot
-                                                      .data!.docs[currentIndex]
-                                                  [AppStrings.keyFBTitle],
-                                            ),
-                                            const SizedBox(
-                                              height: 32,
-                                            ),
-                                            SizedBox(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.04,
-                                            ),
-                                            PrimaryButton(
-                                              text: AppStrings.okBtn,
-                                              itemCallBack: () {
-                                                Navigator.pop(context);
-                                              },
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                  style: ButtonStyle(
-                                    padding: MaterialStateProperty.all(
-                                      const EdgeInsets.symmetric(
-                                        vertical: 8,
-                                        horizontal: 16,
-                                      ),
-                                    ),
-                                    elevation: MaterialStateProperty.all(0),
-                                    backgroundColor:
-                                        MaterialStateProperty.all(kWhiteColor),
-                                    side: MaterialStateProperty.all(
-                                      const BorderSide(
-                                        width: 1,
-                                        strokeAlign:
-                                            BorderSide.strokeAlignCenter,
-                                        color: kSecondaryColor,
-                                      ),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      SvgPicture.asset(kShowPlayerIcon),
-                                      const SizedBox(
-                                        width: 8,
-                                      ),
-                                      Text(
-                                        AppStrings.showPlayerBtn,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge!
-                                            .copyWith(
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
+                                child: ShowPlayerButton(
+                                  playerImage: snapshot.data!.docs[currentIndex]
+                                      [AppStrings.imageFBTitle],
+                                  playerName: snapshot.data!.docs[currentIndex]
+                                      [AppStrings.nameFBTitle],
+                                  keyColor: snapshot.data!.docs[currentIndex]
+                                      [AppStrings.keyFBTitle],
                                 ),
                               ),
                             ],
@@ -280,7 +190,10 @@ class _WhoIamHomeState extends State<WhoIamHome> {
             ),
           );
         } else {
-          return const Center(child: CustomCircularProgressIndicator());
+          return const Center(
+              child: CustomCircularProgressIndicator(
+            color: kWhiteColor,
+          ));
         }
       },
     );
