@@ -34,6 +34,8 @@ class AppStrings {
   static const String passwordTitle = "كلمة السر";
   static const String stopwatchTitle = "٥ X ١٠";
   static const String whoIamTitle = "أنا مين ؟";
+  static const String soundTitle = "وشوش صاحبك";
+  static const String careerTitle = "مسيرة اللاعب";
   static const String contactTitle = "ما تخش ترمي السلام يزميلي";
   static const String instructionTitle = "التعليمات";
   static const String guideTitle = "الأدلة";
@@ -81,6 +83,15 @@ class AppStrings {
   static const String auctionInstruction2 = "اللي بيسمع السؤال المفروض يجاوب بـ آه أو لأ حتى لو ميعرفش الإجابة";
   static const String auctionInstruction3 = "لو معرفش الإجابة بعد ما يسمع كل الأسئلة , الفريق التاني بيستخدم العدد الباقي من الأسئلة وبعدها يجاوب";
   static const String auctionInstruction4 = "بنلعب على 8 جولات ولو فضلنا متعادلين بنروح لكسر التعادل";
+
+  static const String soundInstruction1 = "اللاعب بيلبس السماعة وصاحبه بيحاول يوشوشه إسم اللاعب الموجود في الصورة";
+  static const String soundInstruction2 = "بنلعب على 8 جولات ولو فضلنا متعادلين بنروح لكسر التعادل";
+  static const String soundWarning = "خلي بالك يزميلي زرار التايمر بيشغل الصوت";
+
+  static const String careerInstruction1 = "بيظهر مسيرة لاعب من خلال الأندية اللي لعب فيها واللاعب بيحاول يعرف مين اللاعب ده   ";
+  static const String careerInstruction2 = "بنلعب على 8 جولات ولو فضلنا متعادلين بنروح لكسر التعادل";
+
+
 
   static const String imageFBTitle = 'image';
   static const String nameFBTitle = 'name';
@@ -163,6 +174,8 @@ const kPasswordImage = 'assets/images/password.png';
 const kStopwatchImage = 'assets/images/timer.png';
 const kTeamImage = 'assets/images/nameTheTeam.png';
 const kWhoIamImage = 'assets/images/guessThePlayer.png';
+const kSoundImage = 'assets/images/sound.png';
+const kCareerImage = 'assets/images/career.png';
 
 const kHomeBGImage = 'assets/backgrounds/homeBG.png';
 const kRedPlayerBG = 'assets/backgrounds/Red-PlayerBG.png';
@@ -180,6 +193,7 @@ const kWhatsappIcon = 'assets/icons/whatsapp.svg';
 const kXIcon = 'assets/icons/x.svg';
 const kResetIcon = 'assets/icons/reset.svg';
 const kShowPlayerIcon = 'assets/icons/showPlayer.svg';
+const kWarningIcon = 'assets/icons/warning.svg';
 const pauseIcon = Iconsax.pause5;
 
 class CustomIcons {

@@ -50,30 +50,33 @@ class _AuctionHomeState extends State<AuctionHome> {
                     child: AppBody(
                       widget: Column(
                         children: [
-                          Expanded(
-                            child: ListView(
-                              children: [
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.07,
-                                ),
-                                PlayerCard(
-                                  playerImage: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.imageFBTitle],
-                                  playerName: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.nameFBTitle],
-                                  keyColor: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.keyFBTitle],
-                                ),
-                                SizedBox(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.05,
-                                ),
-                              ],
-                            ),
-                          ),
                           const SizedBox(
-                            height: 24,
+                            height: 16,
+                          ),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.06,
+                                  ),
+                                  PlayerCard(
+                                    playerImage:
+                                        snapshot.data!.docs[currentIndex]
+                                            [AppStrings.imageFBTitle],
+                                    playerName:
+                                        snapshot.data!.docs[currentIndex]
+                                            [AppStrings.nameFBTitle],
+                                    keyColor: snapshot.data!.docs[currentIndex]
+                                        [AppStrings.keyFBTitle],
+                                  ),
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
@@ -96,7 +99,10 @@ class _AuctionHomeState extends State<AuctionHome> {
               ),
             );
           } else {
-            return const Center(child: CustomCircularProgressIndicator(color: kWhiteColor,));
+            return const Center(
+                child: CustomCircularProgressIndicator(
+              color: kWhiteColor,
+            ));
           }
         });
   }

@@ -4,6 +4,8 @@ import 'package:champions/screens/poststart/acting/acting_home.dart';
 import 'package:champions/screens/poststart/acting/acting_instructions.dart';
 import 'package:champions/screens/poststart/auction/auction_home.dart';
 import 'package:champions/screens/poststart/auction/auction_instructions.dart';
+import 'package:champions/screens/poststart/sound/sound_home.dart';
+import 'package:champions/screens/poststart/sound/sound_instructions.dart';
 import 'package:champions/screens/prestart/home_screen.dart';
 import 'package:champions/screens/poststart/password_challenge/password_instructions.dart';
 import 'package:champions/screens/poststart/password_challenge/password_home.dart';
@@ -37,6 +39,7 @@ class DerbyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
+
           debugShowCheckedModeBanner: false,
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
@@ -104,12 +107,14 @@ class DerbyApp extends StatelessWidget {
             StopwatchInstructions.id:(context)=> const StopwatchInstructions(),
             TeamInstructions.id:(context)=> const TeamInstructions(),
             WhoIamInstructions.id:(context)=> const WhoIamInstructions(),
+            SoundInstructions.id:(context)=> const SoundInstructions(),
             ActingHome.id:(context)=> const ActingHome(),
             PasswordHome.id:(context)=> const PasswordHome(),
             AuctionHome.id:(context)=> const AuctionHome(),
             TeamHome.id:(context)=> const TeamHome(),
             StopwatchHome.id:(context)=> const StopwatchHome(),
             WhoIamHome.id:(context)=> const WhoIamHome(),
+            SoundHome.id:(context)=> const SoundHome(),
           },
         );
       },

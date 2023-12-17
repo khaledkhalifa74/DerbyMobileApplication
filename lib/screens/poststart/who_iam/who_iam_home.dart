@@ -90,38 +90,32 @@ class _WhoIamHomeState extends State<WhoIamHome> {
                 Expanded(
                   child: AppBody(
                     widget: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const SizedBox(
+                          height: 24,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            right: 32,
+                          ),
+                          child: Text(
+                            AppStrings.guideTitle,
+                            style:
+                            Theme.of(context).textTheme.titleMedium,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         Expanded(
-                          child: ListView(
+                          child: CustomScrollView(
                             controller: _controller,
-                            children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.02,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 32,
-                                ),
-                                child: Text(
-                                  AppStrings.guideTitle,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.03,
-                              ),
-                              ListView.builder(
-                                physics: const ScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: availableCount,
-                                itemBuilder: (context, index) {
-                                  return CustomContent(
-                                      contentText: items[index].content);
-                                },
-                              ),
+                            slivers: [
+                              SliverList(delegate: SliverChildListDelegate(
+                                List.generate(availableCount, (index) => CustomContent(
+                                    contentText: items[index].content))
+                              )),
                             ],
                           ),
                         ),

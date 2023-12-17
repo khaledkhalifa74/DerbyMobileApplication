@@ -40,7 +40,7 @@ class CustomContact extends StatelessWidget {
             ),
             GestureDetector(
               onTap: ()async{
-                var url = Uri.parse('https://wsend.co/201021797594');
+                var url = Uri.parse('https://wa.me/+201021797594');
                 if(await launchUrl(url)) {
                   throw Exception('Could not launch $url');
                 }
@@ -52,7 +52,7 @@ class CustomContact extends StatelessWidget {
             ),
             GestureDetector(
               onTap: ()async{
-                var url = Uri.parse('https://www.instagram.com/khaled_khalifa74');
+                var url = Uri.parse('https://www.instagram.com/abdullhamed_mohamed/');
                 if(await launchUrl(url)) {
                   throw Exception('Could not launch $url');
                 }

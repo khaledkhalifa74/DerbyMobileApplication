@@ -55,40 +55,42 @@ class _ActingHomeState extends State<ActingHome> {
                     widget: Column(
                       children: [
                         const SizedBox(
-                          height: 24,
+                          height: 16,
                         ),
                         Expanded(
-                          child: ListView(
-                            children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.05,
-                              ),
-                              PlayerCard(
-                                playerImage: snapshot.data!.docs[currentIndex]
-                                    [AppStrings.imageFBTitle],
-                                playerName: snapshot.data!.docs[currentIndex]
-                                    [AppStrings.nameFBTitle],
-                                keyColor: snapshot.data!.docs[currentIndex]
-                                    [AppStrings.keyFBTitle],
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.05,
-                              ),
-                              CustomTimer(
-                                startTime: startTime,
-                                start: start ?? startTime,
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.06,
-                              ),
-                            ],
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height:
+                                  MediaQuery.of(context).size.height * 0.06,
+                                ),
+                                PlayerCard(
+                                  playerImage: snapshot.data!.docs[currentIndex]
+                                  [AppStrings.imageFBTitle],
+                                  playerName: snapshot.data!.docs[currentIndex]
+                                  [AppStrings.nameFBTitle],
+                                  keyColor: snapshot.data!.docs[currentIndex]
+                                  [AppStrings.keyFBTitle],
+                                ),
+                                SizedBox(
+                                  height:
+                                  MediaQuery.of(context).size.height * 0.05,
+                                ),
+                                CustomTimer(
+                                  startTime: startTime,
+                                  start: start ?? startTime,
+                                ),
+                                SizedBox(
+                                  height:
+                                  MediaQuery.of(context).size.height * 0.03,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         const SizedBox(
-                          height: 24,
+                          height: 16,
                         ),
                         Padding(
                           padding: const EdgeInsets.only(

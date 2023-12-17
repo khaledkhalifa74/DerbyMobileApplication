@@ -1,26 +1,32 @@
 import 'dart:async';
+import 'package:animate_icons/animate_icons.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:champions/global_helpers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
-import 'package:animate_icons/animate_icons.dart';
 
-class CustomTimer extends StatefulWidget {
-  CustomTimer({
+class CustomTimerWithSound extends StatefulWidget {
+  CustomTimerWithSound({
     super.key,
     required this.startTime,
     required this.start,
+    required this.soundPlayer,
   });
 
   final int startTime;
   int start;
+  AudioPlayer soundPlayer = AudioPlayer();
+
   @override
-  State<CustomTimer> createState() => _CustomTimerState();
+  State<CustomTimerWithSound> createState() => _CustomTimerState();
 }
-class _CustomTimerState extends State<CustomTimer> {
+
+class _CustomTimerState extends State<CustomTimerWithSound> {
   late AnimateIconController _animateIconController;
   Timer? _timer;
   bool? _isTimerOn;
+
   @override
   void initState() {
     widget.start = widget.startTime;
@@ -71,11 +77,12 @@ class _CustomTimerState extends State<CustomTimer> {
           backgroundColor: kSecondaryColor,
           onPressed: () {
             widget.start = widget.startTime;
-            setState((){
+            setState(() {
               _timer?.cancel();
               if (_animateIconController.isEnd()) {
                 _animateIconController.animateToStart();
               }
+              widget.soundPlayer.pause();
             });
           },
           child: SvgPicture.asset(kResetIcon),
@@ -114,15 +121,17 @@ class _CustomTimerState extends State<CustomTimer> {
                     children: [
                       Text(
                         (widget.start % 60).toString().padLeft(2, "0"),
-                        style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                          fontSize: 38,
-                        ),
+                        style:
+                            Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                  fontSize: 38,
+                                ),
                       ),
                       Text(
                         ':00',
-                        style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                          fontSize: 38,
-                        ),
+                        style:
+                            Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                  fontSize: 38,
+                                ),
                       ),
                     ],
                   ),
@@ -155,6 +164,7 @@ class _CustomTimerState extends State<CustomTimer> {
                 } else if (_animateIconController.isEnd()) {
                   _animateIconController.animateToStart();
                 }
+                widget.soundPlayer.play(AssetSource('sounds/noise_sound.mp3'));
                 _isTimerOn = true;
                 startTimer();
                 return true;
@@ -169,6 +179,7 @@ class _CustomTimerState extends State<CustomTimer> {
                 setState(() {
                   _isTimerOn = false;
                 });
+                widget.soundPlayer.pause();
                 return true;
               },
               controller: _animateIconController,

@@ -55,23 +55,18 @@ class _StopwatchHomeState extends State<StopwatchHome> {
                   child: AppBody(
                     widget: Column(
                       children: [
+                        const SizedBox(
+                          height: 32,
+                        ),
                         Expanded(
-                          child: ListView(
-                            children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.04,
-                              ),
-                              CustomContent(
-                                contentText: snapshot.data!.docs[currentIndex]
-                                    [AppStrings.questionFBTitle],
-                              ),
-                            ],
+                          child: SingleChildScrollView(
+                            child: CustomContent(
+                              contentText: snapshot.data!.docs[currentIndex]
+                                  [AppStrings.questionFBTitle],
+                            ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 24,
-                        ),
+
                         CustomTimer(
                           startTime: startTime,
                           start: start ?? startTime,

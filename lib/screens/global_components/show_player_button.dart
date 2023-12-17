@@ -28,42 +28,44 @@ class ShowPlayerButton extends StatelessWidget {
                 top: 32,
                 bottom: 48,
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    AppStrings.thePlayerIs,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge,
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context)
-                        .size
-                        .height *
-                        0.1,
-                  ),
-                  PlayerCard(
-                    playerImage: playerImage,
-                    playerName: playerName,
-                    keyColor: keyColor,
-                  ),
-                  const SizedBox(
-                    height: 32,
-                  ),
-                  SizedBox(
-                    height: MediaQuery.of(context)
-                        .size
-                        .height *
-                        0.04,
-                  ),
-                  PrimaryButton(
-                    text: AppStrings.okBtn,
-                    itemCallBack: () {
-                      Navigator.pop(context);
-                    },
-                  )
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      AppStrings.thePlayerIs,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context)
+                          .size
+                          .height *
+                          0.1,
+                    ),
+                    PlayerCard(
+                      playerImage: playerImage,
+                      playerName: playerName,
+                      keyColor: keyColor,
+                    ),
+                    const SizedBox(
+                      height: 32,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context)
+                          .size
+                          .height *
+                          0.04  ,
+                    ),
+                    PrimaryButton(
+                      text: AppStrings.okBtn,
+                      itemCallBack: () {
+                        Navigator.pop(context);
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
           );

@@ -53,28 +53,28 @@ class _TeamHomeState extends State<TeamHome> {
                     widget: Column(
                       children: [
                         Expanded(
-                          child: ListView(
-                            children: [
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.04,
-                              ),
-                              TeamImage(
-                                imageUrl: snapshot.data!.docs[currentIndex]
-                                    [AppStrings.imageFBTitle],
-                              ),
-                              SizedBox(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.04,
-                              ),
-                              Text(
-                                snapshot.data!.docs[currentIndex]
-                                    [AppStrings.nameFBTitle],
-                                style:
-                                    Theme.of(context).textTheme.headlineMedium,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                const SizedBox(
+                                  height: 32,
+                                ),
+                                TeamImage(
+                                  imageUrl: snapshot.data!.docs[currentIndex]
+                                  [AppStrings.imageFBTitle],
+                                ),
+                                const SizedBox(
+                                  height: 32,
+                                ),
+                                Text(
+                                  snapshot.data!.docs[currentIndex]
+                                  [AppStrings.nameFBTitle],
+                                  style:
+                                  Theme.of(context).textTheme.headlineMedium,
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         SecondaryButton(
