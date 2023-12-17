@@ -92,10 +92,10 @@ class AppStrings {
   static const String careerInstruction2 = "بنلعب على 8 جولات ولو فضلنا متعادلين بنروح لكسر التعادل";
 
 
-
-  static const String imageFBTitle = 'image';
-  static const String nameFBTitle = 'name';
-  static const String keyFBTitle = 'key';
+  static const String careerImageFBTitle = 'careerImage';
+  static const String playerImageFBTitle = 'image';
+  static const String playerNameFBTitle = 'name';
+  static const String playerKeyColorFBTitle = 'key';
   static const String firstClueFBTitle = 'firstClue';
   static const String secondClueFBTitle = 'secondClue';
   static const String thirdClueFBTitle = 'thirdClue';
@@ -165,6 +165,17 @@ class AppStrings {
   static const String midStopWatchCollection = 'midStopWatch';
   static const String hardStopWatchCollection = 'hardStopWatch';
 
+  static const String soundCollection = 'sound';
+  static const String soundDoc = '7yYXa9xJumbtDSKF46I0';
+  static const String easySoundCollection = 'easySound';
+  static const String midSoundCollection = 'midSound';
+  static const String hardSoundCollection = 'hardSound';
+
+  static const String careerCollection = 'career';
+  static const String careerDoc = 'I32kNlHPqX49DVrdNwz0';
+  static const String easyCareerCollection = 'easyCareer';
+  static const String midCareerCollection = 'midCareer';
+  static const String hardCareerCollection = 'hardCareer';
 }
 
 //Images
@@ -313,5 +324,36 @@ class FireBaseReferences{
       .doc(AppStrings.whoIamDoc)
       .collection(AppStrings.hardWhoIamCollection);
 
+
+  static CollectionReference kEasySoundRef = FirebaseFirestore.instance
+      .collection(AppStrings.soundCollection)
+      .doc(AppStrings.soundDoc)
+      .collection(AppStrings.easySoundCollection);
+
+  static CollectionReference kMidSoundRef = FirebaseFirestore.instance
+      .collection(AppStrings.soundCollection)
+      .doc(AppStrings.soundDoc)
+      .collection(AppStrings.midSoundCollection);
+
+  static CollectionReference kHardSoundRef = FirebaseFirestore.instance
+      .collection(AppStrings.soundCollection)
+      .doc(AppStrings.soundDoc)
+      .collection(AppStrings.hardSoundCollection);
+
+
+  static CollectionReference kEasyCareerRef = FirebaseFirestore.instance
+      .collection(AppStrings.careerCollection)
+      .doc(AppStrings.careerDoc)
+      .collection(AppStrings.easyCareerCollection);
+
+  static CollectionReference kMidCareerRef = FirebaseFirestore.instance
+      .collection(AppStrings.careerCollection)
+      .doc(AppStrings.careerDoc)
+      .collection(AppStrings.midCareerCollection);
+
+  static CollectionReference kHardCareerRef = FirebaseFirestore.instance
+      .collection(AppStrings.careerCollection)
+      .doc(AppStrings.careerDoc)
+      .collection(AppStrings.hardCareerCollection);
 
 }

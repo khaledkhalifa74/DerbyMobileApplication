@@ -19,9 +19,9 @@ class CareerHome extends StatefulWidget {
 }
 
 class _ActingHomeState extends State<CareerHome> {
-  CollectionReference easy = FireBaseReferences.kEasyActingRef;
-  CollectionReference mid = FireBaseReferences.kMidActingRef;
-  CollectionReference hard = FireBaseReferences.kHardActingRef;
+  CollectionReference easy = FireBaseReferences.kEasyCareerRef;
+  CollectionReference mid = FireBaseReferences.kMidCareerRef;
+  CollectionReference hard = FireBaseReferences.kHardCareerRef;
   int startTime = 30;
   int? start;
   int currentIndex = 0;
@@ -67,6 +67,8 @@ class _ActingHomeState extends State<CareerHome> {
                                   MediaQuery.of(context).size.height * 0.055,
                                 ),
                                 CustomImage(
+                                  // snapshot.data!.docs[currentIndex]
+                                  // [AppStrings.careerImageFBTitle],
                                     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/champions-8ca9d.appspot.com/o/team%2Feasy%2FContent.png?alt=media&token=1a7fca98-2ac3-48d7-b87d-8cb1c6c845af',
                                     height: MediaQuery.of(context).size.height * 0.35,
                                     radius: 48,
@@ -109,11 +111,11 @@ class _ActingHomeState extends State<CareerHome> {
                           ),
                           child: ShowPlayerButton(
                               playerImage: snapshot.data!.docs[currentIndex]
-                              [AppStrings.imageFBTitle],
+                              [AppStrings.playerImageFBTitle],
                               playerName: snapshot.data!.docs[currentIndex]
-                              [AppStrings.nameFBTitle],
+                              [AppStrings.playerNameFBTitle],
                               keyColor: snapshot.data!.docs[currentIndex]
-                              [AppStrings.keyFBTitle],
+                              [AppStrings.playerKeyColorFBTitle],
                           ),
                         )
                       ],

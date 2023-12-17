@@ -19,9 +19,9 @@ class SoundHome extends StatefulWidget {
 }
 
 class _ActingHomeState extends State<SoundHome> {
-  CollectionReference easy = FireBaseReferences.kEasyActingRef;
-  CollectionReference mid = FireBaseReferences.kMidActingRef;
-  CollectionReference hard = FireBaseReferences.kHardActingRef;
+  CollectionReference easy = FireBaseReferences.kEasySoundRef;
+  CollectionReference mid = FireBaseReferences.kMidSoundRef;
+  CollectionReference hard = FireBaseReferences.kHardSoundRef;
   int startTime = 30;
   int? start;
   int currentIndex = 0;
@@ -31,7 +31,6 @@ class _ActingHomeState extends State<SoundHome> {
   @override
   void initState() {
     randomNumbers = [];
-    //animateIconController = AnimateIconController();
     super.initState();
   }
 
@@ -71,11 +70,11 @@ class _ActingHomeState extends State<SoundHome> {
                                 ),
                                 PlayerCard(
                                   playerImage: snapshot.data!.docs[currentIndex]
-                                  [AppStrings.imageFBTitle],
+                                  [AppStrings.playerImageFBTitle],
                                   playerName: snapshot.data!.docs[currentIndex]
-                                  [AppStrings.nameFBTitle],
+                                  [AppStrings.playerNameFBTitle],
                                   keyColor: snapshot.data!.docs[currentIndex]
-                                  [AppStrings.keyFBTitle],
+                                  [AppStrings.playerKeyColorFBTitle],
                                 ),
                                 SizedBox(
                                   height:

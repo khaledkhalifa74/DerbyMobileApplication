@@ -64,12 +64,12 @@ class _AuctionHomeState extends State<AuctionHome> {
                                   PlayerCard(
                                     playerImage:
                                         snapshot.data!.docs[currentIndex]
-                                            [AppStrings.imageFBTitle],
+                                            [AppStrings.playerImageFBTitle],
                                     playerName:
                                         snapshot.data!.docs[currentIndex]
-                                            [AppStrings.nameFBTitle],
+                                            [AppStrings.playerNameFBTitle],
                                     keyColor: snapshot.data!.docs[currentIndex]
-                                        [AppStrings.keyFBTitle],
+                                        [AppStrings.playerKeyColorFBTitle],
                                   ),
                                   const SizedBox(
                                     height: 16,

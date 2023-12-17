@@ -61,7 +61,7 @@ class _TeamHomeState extends State<TeamHome> {
                                 ),
                                 CustomImage(
                                   imageUrl: snapshot.data!.docs[currentIndex]
-                                  [AppStrings.imageFBTitle],
+                                  [AppStrings.playerImageFBTitle],
                                   height: MediaQuery.of(context).size.height * 0.22,
                                   radius: 28,
                                 ),
@@ -70,7 +70,7 @@ class _TeamHomeState extends State<TeamHome> {
                                 ),
                                 Text(
                                   snapshot.data!.docs[currentIndex]
-                                  [AppStrings.nameFBTitle],
+                                  [AppStrings.playerNameFBTitle],
                                   style:
                                   Theme.of(context).textTheme.headlineMedium,
                                   textAlign: TextAlign.center,
@@ -104,7 +104,7 @@ class _TeamHomeState extends State<TeamHome> {
                                 context: context,
                                 builder: (context) => PlayersNamesBottomSheet(
                                   teamName: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.nameFBTitle],
+                                      [AppStrings.playerNameFBTitle],
                                   player1: snapshot.data!.docs[currentIndex]
                                       [AppStrings.player1FBTitle],
                                   player2: snapshot.data!.docs[currentIndex]
