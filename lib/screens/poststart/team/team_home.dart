@@ -5,7 +5,7 @@ import 'package:champions/screens/global_components/players_names_bottom_sheet.d
 import 'package:champions/screens/global_components/primary_button.dart';
 import 'package:champions/screens/global_components/secondary_button.dart';
 import 'package:champions/global_helpers/constants.dart';
-import 'package:champions/screens/global_components/team_image.dart';
+import 'package:champions/screens/global_components/custom_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -59,9 +59,11 @@ class _TeamHomeState extends State<TeamHome> {
                                 const SizedBox(
                                   height: 32,
                                 ),
-                                TeamImage(
+                                CustomImage(
                                   imageUrl: snapshot.data!.docs[currentIndex]
                                   [AppStrings.imageFBTitle],
+                                  height: MediaQuery.of(context).size.height * 0.22,
+                                  radius: 28,
                                 ),
                                 const SizedBox(
                                   height: 32,

@@ -4,6 +4,8 @@ import 'package:champions/screens/poststart/acting/acting_home.dart';
 import 'package:champions/screens/poststart/acting/acting_instructions.dart';
 import 'package:champions/screens/poststart/auction/auction_home.dart';
 import 'package:champions/screens/poststart/auction/auction_instructions.dart';
+import 'package:champions/screens/poststart/career/career_home.dart';
+import 'package:champions/screens/poststart/career/career_instructions.dart';
 import 'package:champions/screens/poststart/sound/sound_home.dart';
 import 'package:champions/screens/poststart/sound/sound_instructions.dart';
 import 'package:champions/screens/prestart/home_screen.dart';
@@ -108,6 +110,7 @@ class DerbyApp extends StatelessWidget {
             TeamInstructions.id:(context)=> const TeamInstructions(),
             WhoIamInstructions.id:(context)=> const WhoIamInstructions(),
             SoundInstructions.id:(context)=> const SoundInstructions(),
+            CareerInstructions.id:(context)=> const CareerInstructions(),
             ActingHome.id:(context)=> const ActingHome(),
             PasswordHome.id:(context)=> const PasswordHome(),
             AuctionHome.id:(context)=> const AuctionHome(),
@@ -115,6 +118,7 @@ class DerbyApp extends StatelessWidget {
             StopwatchHome.id:(context)=> const StopwatchHome(),
             WhoIamHome.id:(context)=> const WhoIamHome(),
             SoundHome.id:(context)=> const SoundHome(),
+            CareerHome.id:(context)=> const CareerHome(),
           },
         );
       },

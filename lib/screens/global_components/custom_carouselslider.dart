@@ -3,6 +3,7 @@ import 'package:champions/global_helpers/constants.dart';
 import 'package:champions/screens/global_components/home_card.dart';
 import 'package:champions/screens/poststart/acting/acting_instructions.dart';
 import 'package:champions/screens/poststart/auction/auction_instructions.dart';
+import 'package:champions/screens/poststart/career/career_instructions.dart';
 import 'package:champions/screens/poststart/password_challenge/password_instructions.dart';
 import 'package:champions/screens/poststart/sound/sound_instructions.dart';
 import 'package:champions/screens/poststart/stopwatch/stopwatch_instructions.dart';
@@ -54,7 +55,7 @@ class CustomCarouselSlider extends StatelessWidget {
         HomeCard(
           image: kCareerImage,
           text: AppStrings.careerTitle,
-          widget: WhoIamInstructions.id,
+          widget: CareerInstructions.id,
         ),
       ],
       options: CarouselOptions(
