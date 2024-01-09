@@ -55,7 +55,7 @@ class AppStrings {
   static const String answersTitle = "إجابات";
   static const String okBtn = "اشطا يزميلي";
   static const String thePlayerIs = "اللاعب ده هو";
-  static const String errorMessage = "اتأكد من النت يزميلي";
+  static const String errorMessage = "اووبس .. فيه مشكلة هنا يزميلي";
 
 
   static const String passwordInstruction1 = "مينفعش تقول اسم أي لاعب أو فريق أو جنسية اللاعب";

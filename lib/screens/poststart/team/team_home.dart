@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:champions/screens/global_components/app_body.dart';
 import 'package:champions/screens/global_components/app_header.dart';
 import 'package:champions/screens/global_components/custom_circular_progress_indicator.dart';
@@ -22,7 +24,8 @@ class _TeamHomeState extends State<TeamHome> {
   CollectionReference easy = FireBaseReferences.kEasyTeamRef;
   CollectionReference mid = FireBaseReferences.kMidTeamRef;
   CollectionReference hard = FireBaseReferences.kHardTeamRef;
-  int currentIndex = 0;
+  int currentIndex = Random().nextInt(39);
+  //int currentIndex = 0;
 
   @override
   void initState() {
@@ -82,6 +85,7 @@ class _TeamHomeState extends State<TeamHome> {
                         SecondaryButton(
                           text: AppStrings.nextTeamBtn,
                           itemCallBack: () {
+                            // currentIndex++;
                             currentIndex = generateRandomNumber(
                                 snapshot.data!.docs.length);
                             setState(() {});
@@ -140,10 +144,13 @@ class _TeamHomeState extends State<TeamHome> {
             ),
           );
         } else {
-          return const Center(
-              child: CustomCircularProgressIndicator(
-            color: kWhiteColor,
-          ));
+          return const Scaffold(
+            backgroundColor: kWhiteColor,
+            body: Center(
+                child: CustomCircularProgressIndicator(
+                  color: kPrimaryColor,
+                )),
+          );
         }
       },
     );

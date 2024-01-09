@@ -118,7 +118,7 @@ class _StopwatchHomeState extends State<StopwatchHome> {
                                   player9: snapshot.data!.docs[currentIndex]
                                       [AppStrings.answer9FBTitle],
                                   player10: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.answer10FBTitle],
+                                  [AppStrings.answer10FBTitle],
                                 ),
                               );
                             },
@@ -132,7 +132,13 @@ class _StopwatchHomeState extends State<StopwatchHome> {
             ),
           );
         } else {
-          return const Center(child: CustomCircularProgressIndicator(color: kWhiteColor,));
+          return const Scaffold(
+            backgroundColor: kWhiteColor,
+            body: Center(
+                child: CustomCircularProgressIndicator(
+                  color: kPrimaryColor,
+                )),
+          );
         }
       },
     );

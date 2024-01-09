@@ -15,6 +15,9 @@ class ErrorMessage extends StatelessWidget {
           size: 50,
           color: kWhiteColor,
         ),
+        const SizedBox(
+          height: 16,
+        ),
         Text(
           AppStrings.errorMessage,
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(

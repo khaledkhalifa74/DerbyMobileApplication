@@ -33,6 +33,11 @@ class _WhoIamHomeState extends State<WhoIamHome> {
     randomNumbers = [];
     super.initState();
   }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -184,10 +189,13 @@ class _WhoIamHomeState extends State<WhoIamHome> {
             ),
           );
         } else {
-          return const Center(
-              child: CustomCircularProgressIndicator(
-            color: kWhiteColor,
-          ));
+          return const Scaffold(
+            backgroundColor: kWhiteColor,
+            body: Center(
+                child: CustomCircularProgressIndicator(
+                  color: kPrimaryColor,
+                )),
+          );
         }
       },
     );

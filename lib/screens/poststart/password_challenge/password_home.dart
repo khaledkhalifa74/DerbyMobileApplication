@@ -113,7 +113,13 @@ class _PasswordHomeState extends State<PasswordHome> {
             ),
           );
         } else {
-          return const Center(child: CustomCircularProgressIndicator(color: kWhiteColor,));
+          return const Scaffold(
+            backgroundColor: kWhiteColor,
+            body: Center(
+                child: CustomCircularProgressIndicator(
+                  color: kPrimaryColor,
+                )),
+          );
         }
       },
     );
