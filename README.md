@@ -8,7 +8,7 @@ Derby app is a cross-platform challenges and quizzes game. It contains different
 - Firebase firestore
 - Firebase storage
 
-## Screens from App
+## Screens from app
 ![Home](https://github.com/khaledkhalifa74/derbyApp/assets/96270919/96ef6722-b8c2-4ab8-965b-4c3c0fddbf68)
 ![Who I'm_](https://github.com/khaledkhalifa74/derbyApp/assets/96270919/1ac36ae6-4d74-4045-97ff-30ccfc480fe4)
 ![Who I'm_ (1)](https://github.com/khaledkhalifa74/derbyApp/assets/96270919/ce428403-6781-4eb9-973a-2e31229c3030)
