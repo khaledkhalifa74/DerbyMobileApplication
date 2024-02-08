@@ -1,5 +1,7 @@
+import 'package:champions/global_helpers/internet_connection.dart';
 import 'package:champions/screens/global_components/app_body.dart';
 import 'package:champions/screens/global_components/app_header.dart';
+import 'package:champions/screens/global_components/connection_error_body.dart';
 import 'package:champions/screens/global_components/custom_circular_progress_indicator.dart';
 import 'package:champions/screens/global_components/custom_image.dart';
 import 'package:champions/screens/global_components/custom_timer.dart';
@@ -28,6 +30,7 @@ class _ActingHomeState extends State<CareerHome> {
 
   @override
   void initState() {
+    InternetConnection.checkInternet();
     randomNumbers = [];
     super.initState();
   }
@@ -43,97 +46,105 @@ class _ActingHomeState extends State<CareerHome> {
           ? mid.snapshots()
           : hard.snapshots(),
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Scaffold(
-            backgroundColor: kPrimaryColor,
-            body: Column(
-              children: [
-                const AppHeader(
-                  title: AppStrings.careerTitle,
-                ),
-                Expanded(
-                  child: AppBody(
-                    widget: Column(
-                      children: [
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height:
-                                  MediaQuery.of(context).size.height * 0.055,
-                                ),
-                                CustomImage(
-                                  // snapshot.data!.docs[currentIndex]
-                                  // [AppStrings.careerImageFBTitle],
+        if (InternetConnection.hasInternet == true){
+          if (snapshot.hasData) {
+            return Scaffold(
+              backgroundColor: kPrimaryColor,
+              body: Column(
+                children: [
+                  const AppHeader(
+                    title: AppStrings.careerTitle,
+                  ),
+                  Expanded(
+                    child: AppBody(
+                      widget: Column(
+                        children: [
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height:
+                                    MediaQuery.of(context).size.height * 0.055,
+                                  ),
+                                  CustomImage(
+                                    // snapshot.data!.docs[currentIndex]
+                                    // [AppStrings.careerImageFBTitle],
                                     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/champions-8ca9d.appspot.com/o/team%2Feasy%2FContent.png?alt=media&token=1a7fca98-2ac3-48d7-b87d-8cb1c6c845af',
                                     height: MediaQuery.of(context).size.height * 0.35,
                                     radius: 48,
-                                ),
-                                SizedBox(
-                                  height:
-                                  MediaQuery.of(context).size.height * 0.05,
-                                ),
-                                CustomTimer(
-                                  startTime: startTime,
-                                  start: start ?? startTime,
-                                ),
-                                SizedBox(
-                                  height:
-                                  MediaQuery.of(context).size.height * 0.03,
-                                ),
-                              ],
+                                  ),
+                                  SizedBox(
+                                    height:
+                                    MediaQuery.of(context).size.height * 0.05,
+                                  ),
+                                  CustomTimer(
+                                    startTime: startTime,
+                                    start: start ?? startTime,
+                                  ),
+                                  SizedBox(
+                                    height:
+                                    MediaQuery.of(context).size.height * 0.03,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        PrimaryButton(
-                          text: AppStrings.nextPlayerBtn,
-                          itemCallBack: () {
-                            setState(() {
-                              currentIndex = generateRandomNumber(
-                                  snapshot.data!.docs.length);
-                              start = startTime;
-                            });
-                          },
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            bottom: 32,
+                          const SizedBox(
+                            height: 16,
                           ),
-                          child: ShowPlayerButton(
+                          PrimaryButton(
+                            text: AppStrings.nextPlayerBtn,
+                            itemCallBack: () {
+                              setState(() {
+                                currentIndex = generateRandomNumber(
+                                    snapshot.data!.docs.length);
+                                start = startTime;
+                              });
+                            },
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 32,
+                            ),
+                            child: ShowPlayerButton(
                               playerImage: snapshot.data!.docs[currentIndex]
                               [AppStrings.playerImageFBTitle],
                               playerName: snapshot.data!.docs[currentIndex]
                               [AppStrings.playerNameFBTitle],
                               keyColor: snapshot.data!.docs[currentIndex]
                               [AppStrings.playerKeyColorFBTitle],
-                          ),
-                        )
-                      ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          );
-        } else {
-          return const Scaffold(
-            backgroundColor: kWhiteColor,
-            body: Center(
-                child: CustomCircularProgressIndicator(
-                  color: kPrimaryColor,
-                )),
-          );
+                ],
+              ),
+            );
+          } else {
+            return const Scaffold(
+              backgroundColor: kWhiteColor,
+              body: Center(
+                  child: CustomCircularProgressIndicator(
+                    color: kPrimaryColor,
+                  )),
+            );
+          }
         }
+        return ConnectionErrorBody(
+          onPressed: ()async{
+            await InternetConnection.checkInternet();
+            setState(() {});
+          },
+        );
       },
     );
   }

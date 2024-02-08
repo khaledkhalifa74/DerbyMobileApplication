@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -56,7 +55,9 @@ class AppStrings {
   static const String okBtn = "اشطا يزميلي";
   static const String thePlayerIs = "اللاعب ده هو";
   static const String errorMessage = "اووبس .. فيه مشكلة هنا يزميلي";
-
+  static const String connectionErrorMessage1 = "اوووبس ، فيه مشكلة في النت";
+  static const String connectionErrorMessage2 = "اتأكد انك موصل النت يا زميلي";
+  static const String tryAgainBtn = "جرب تاني";
 
   static const String passwordInstruction1 = "مينفعش تقول اسم أي لاعب أو فريق أو جنسية اللاعب";
   static const String passwordInstruction2 = "لازم تقول كلمة واحدة بس في كل مرة وبتتلعب على 8 جولات";
@@ -187,6 +188,7 @@ const kTeamImage = 'assets/images/nameTheTeam.png';
 const kWhoIamImage = 'assets/images/guessThePlayer.png';
 const kSoundImage = 'assets/images/sound.png';
 const kCareerImage = 'assets/images/career.png';
+const kConnectionErrorImage = 'assets/images/connectionError.png';
 
 const kHomeBGImage = 'assets/backgrounds/homeBG.png';
 const kRedPlayerBG = 'assets/backgrounds/Red-PlayerBG.png';

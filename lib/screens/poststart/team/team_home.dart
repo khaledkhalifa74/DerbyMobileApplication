@@ -1,7 +1,9 @@
 import 'dart:math';
 
+import 'package:champions/global_helpers/internet_connection.dart';
 import 'package:champions/screens/global_components/app_body.dart';
 import 'package:champions/screens/global_components/app_header.dart';
+import 'package:champions/screens/global_components/connection_error_body.dart';
 import 'package:champions/screens/global_components/custom_circular_progress_indicator.dart';
 import 'package:champions/screens/global_components/players_names_bottom_sheet.dart';
 import 'package:champions/screens/global_components/primary_button.dart';
@@ -29,6 +31,7 @@ class _TeamHomeState extends State<TeamHome> {
 
   @override
   void initState() {
+    InternetConnection.checkInternet();
     randomNumbers = [];
     super.initState();
   }
@@ -43,115 +46,123 @@ class _TeamHomeState extends State<TeamHome> {
               ? mid.snapshots()
               : hard.snapshots(),
       builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Scaffold(
-            backgroundColor: kPrimaryColor,
-            body: Column(
-              children: [
-                const AppHeader(
-                  title: AppStrings.teamTitle,
-                ),
-                Expanded(
-                  child: AppBody(
-                    widget: Column(
-                      children: [
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                const SizedBox(
-                                  height: 32,
-                                ),
-                                CustomImage(
-                                  imageUrl: snapshot.data!.docs[currentIndex]
-                                  [AppStrings.playerImageFBTitle],
-                                  height: MediaQuery.of(context).size.height * 0.22,
-                                  radius: 28,
-                                ),
-                                const SizedBox(
-                                  height: 32,
-                                ),
-                                Text(
-                                  snapshot.data!.docs[currentIndex]
-                                  [AppStrings.playerNameFBTitle],
-                                  style:
-                                  Theme.of(context).textTheme.headlineMedium,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
+        if (InternetConnection.hasInternet == true){
+          if (snapshot.hasData) {
+            return Scaffold(
+              backgroundColor: kPrimaryColor,
+              body: Column(
+                children: [
+                  const AppHeader(
+                    title: AppStrings.teamTitle,
+                  ),
+                  Expanded(
+                    child: AppBody(
+                      widget: Column(
+                        children: [
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
+                                  CustomImage(
+                                    imageUrl: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.playerImageFBTitle],
+                                    height: MediaQuery.of(context).size.height * 0.22,
+                                    radius: 28,
+                                  ),
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
+                                  Text(
+                                    snapshot.data!.docs[currentIndex]
+                                    [AppStrings.playerNameFBTitle],
+                                    style:
+                                    Theme.of(context).textTheme.headlineMedium,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        SecondaryButton(
-                          text: AppStrings.nextTeamBtn,
-                          itemCallBack: () {
-                            // currentIndex++;
-                            currentIndex = generateRandomNumber(
-                                snapshot.data!.docs.length);
-                            setState(() {});
-                          },
-                        ),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            bottom: 48,
-                          ),
-                          child: PrimaryButton(
-                            text: AppStrings.showPlayersBtn,
+                          SecondaryButton(
+                            text: AppStrings.nextTeamBtn,
                             itemCallBack: () {
-                              showModalBottomSheet(
-                                elevation: 0,
-                                isScrollControlled: true,
-                                backgroundColor: kWhiteColor,
-                                context: context,
-                                builder: (context) => PlayersNamesBottomSheet(
-                                  teamName: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.playerNameFBTitle],
-                                  player1: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player1FBTitle],
-                                  player2: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player2FBTitle],
-                                  player3: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player3FBTitle],
-                                  player4: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player4FBTitle],
-                                  player5: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player5FBTitle],
-                                  player6: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player6FBTitle],
-                                  player7: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player7FBTitle],
-                                  player8: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player8FBTitle],
-                                  player9: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player9FBTitle],
-                                  player10: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player10FBTitle],
-                                  player11: snapshot.data!.docs[currentIndex]
-                                      [AppStrings.player11FBTitle],
-                                ),
-                              );
+                              // currentIndex++;
+                              currentIndex = generateRandomNumber(
+                                  snapshot.data!.docs.length);
+                              setState(() {});
                             },
                           ),
-                        ),
-                      ],
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 48,
+                            ),
+                            child: PrimaryButton(
+                              text: AppStrings.showPlayersBtn,
+                              itemCallBack: () {
+                                showModalBottomSheet(
+                                  elevation: 0,
+                                  isScrollControlled: true,
+                                  backgroundColor: kWhiteColor,
+                                  context: context,
+                                  builder: (context) => PlayersNamesBottomSheet(
+                                    teamName: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.playerNameFBTitle],
+                                    player1: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player1FBTitle],
+                                    player2: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player2FBTitle],
+                                    player3: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player3FBTitle],
+                                    player4: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player4FBTitle],
+                                    player5: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player5FBTitle],
+                                    player6: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player6FBTitle],
+                                    player7: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player7FBTitle],
+                                    player8: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player8FBTitle],
+                                    player9: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player9FBTitle],
+                                    player10: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player10FBTitle],
+                                    player11: snapshot.data!.docs[currentIndex]
+                                    [AppStrings.player11FBTitle],
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          );
-        } else {
-          return const Scaffold(
-            backgroundColor: kWhiteColor,
-            body: Center(
-                child: CustomCircularProgressIndicator(
-                  color: kPrimaryColor,
-                )),
-          );
+                ],
+              ),
+            );
+          } else {
+            return const Scaffold(
+              backgroundColor: kWhiteColor,
+              body: Center(
+                  child: CustomCircularProgressIndicator(
+                    color: kPrimaryColor,
+                  )),
+            );
+          }
         }
+        return ConnectionErrorBody(
+          onPressed: ()async{
+            await InternetConnection.checkInternet();
+            setState(() {});
+          },
+        );
       },
     );
   }
