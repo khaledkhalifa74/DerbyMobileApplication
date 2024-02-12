@@ -21,14 +21,12 @@ class SoundHome extends StatefulWidget {
 }
 
 class _ActingHomeState extends State<SoundHome> {
-  CollectionReference easy = FireBaseReferences.kEasySoundRef;
-  CollectionReference mid = FireBaseReferences.kMidSoundRef;
-  CollectionReference hard = FireBaseReferences.kHardSoundRef;
+  CollectionReference sound = FireBaseReferences.kSoundRef;
+
   int startTime = 30;
   int? start;
   int currentIndex = 0;
   AudioPlayer soundPlayer = AudioPlayer();
-  //late final AnimateIconController animateIconController;
 
   @override
   void initState() {
@@ -36,20 +34,13 @@ class _ActingHomeState extends State<SoundHome> {
     randomNumbers = [];
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as String;
-
     return StreamBuilder<QuerySnapshot>(
-      stream: args == AppStrings.easyId
-          ? easy.snapshots()
-          : args == AppStrings.midId
-          ? mid.snapshots()
-          : hard.snapshots(),
+      stream: sound.snapshots(),
       builder: (context, snapshot) {
         if (InternetConnection.hasInternet == true){
-          if (snapshot.hasData) {
+          if (snapshot.hasData && snapshot.data != null) {
             return Scaffold(
               backgroundColor: kPrimaryColor,
               body: Column(

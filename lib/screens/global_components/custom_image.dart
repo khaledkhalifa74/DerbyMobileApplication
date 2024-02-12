@@ -3,7 +3,6 @@ import 'package:champions/global_helpers/constants.dart';
 import 'package:champions/screens/global_components/custom_circular_progress_indicator.dart';
 import 'package:champions/screens/global_components/error_message.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_view/photo_view.dart';
 
 class CustomImage extends StatefulWidget {
   const CustomImage({

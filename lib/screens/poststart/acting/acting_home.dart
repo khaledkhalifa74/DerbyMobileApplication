@@ -46,7 +46,7 @@ class _ActingHomeState extends State<ActingHome> {
               : hard.snapshots(),
       builder: (context, snapshot) {
         if (InternetConnection.hasInternet == true) {
-          if (snapshot.hasData) {
+          if (snapshot.hasData && snapshot.data != null) {
             return Scaffold(
               backgroundColor: kPrimaryColor,
               body: Column(
@@ -71,12 +71,12 @@ class _ActingHomeState extends State<ActingHome> {
                                   ),
                                   PlayerCard(
                                     playerImage:
-                                        snapshot.data!.docs[currentIndex]
+                                        snapshot.data?.docs[currentIndex]
                                             [AppStrings.playerImageFBTitle],
                                     playerName:
-                                        snapshot.data!.docs[currentIndex]
+                                        snapshot.data?.docs[currentIndex]
                                             [AppStrings.playerNameFBTitle],
-                                    keyColor: snapshot.data!.docs[currentIndex]
+                                    keyColor: snapshot.data?.docs[currentIndex]
                                         [AppStrings.playerKeyColorFBTitle],
                                   ),
                                   SizedBox(

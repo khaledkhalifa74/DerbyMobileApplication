@@ -100,14 +100,9 @@ class CustomSoundInstructions extends StatelessWidget {
             child: PrimaryButton(
               text: AppStrings.letsGoBtn,
               itemCallBack: () {
-                showModalBottomSheet(
-                  elevation: 0,
-                  isScrollControlled: true,
-                  backgroundColor: kWhiteColor,
-                  context: context,
-                  builder: (context) => SelectLevelBottomSheet(
-                    widgetPush: SoundHome.id,
-                  ),
+                Navigator.pushReplacementNamed(
+                    context,
+                    SoundHome.id,
                 );
               },
             ),

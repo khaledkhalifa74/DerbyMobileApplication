@@ -47,7 +47,7 @@ class _TeamHomeState extends State<TeamHome> {
               : hard.snapshots(),
       builder: (context, snapshot) {
         if (InternetConnection.hasInternet == true){
-          if (snapshot.hasData) {
+          if (snapshot.hasData && snapshot.data != null) {
             return Scaffold(
               backgroundColor: kPrimaryColor,
               body: Column(
@@ -67,7 +67,7 @@ class _TeamHomeState extends State<TeamHome> {
                                     height: 32,
                                   ),
                                   CustomImage(
-                                    imageUrl: snapshot.data!.docs[currentIndex]
+                                    imageUrl: snapshot.data?.docs[currentIndex]
                                     [AppStrings.playerImageFBTitle],
                                     height: MediaQuery.of(context).size.height * 0.22,
                                     radius: 28,
@@ -76,7 +76,7 @@ class _TeamHomeState extends State<TeamHome> {
                                     height: 32,
                                   ),
                                   Text(
-                                    snapshot.data!.docs[currentIndex]
+                                    snapshot.data?.docs[currentIndex]
                                     [AppStrings.playerNameFBTitle],
                                     style:
                                     Theme.of(context).textTheme.headlineMedium,
@@ -111,29 +111,29 @@ class _TeamHomeState extends State<TeamHome> {
                                   backgroundColor: kWhiteColor,
                                   context: context,
                                   builder: (context) => PlayersNamesBottomSheet(
-                                    teamName: snapshot.data!.docs[currentIndex]
+                                    teamName: snapshot.data?.docs[currentIndex]
                                     [AppStrings.playerNameFBTitle],
-                                    player1: snapshot.data!.docs[currentIndex]
+                                    player1: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player1FBTitle],
-                                    player2: snapshot.data!.docs[currentIndex]
+                                    player2: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player2FBTitle],
-                                    player3: snapshot.data!.docs[currentIndex]
+                                    player3: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player3FBTitle],
-                                    player4: snapshot.data!.docs[currentIndex]
+                                    player4: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player4FBTitle],
-                                    player5: snapshot.data!.docs[currentIndex]
+                                    player5: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player5FBTitle],
-                                    player6: snapshot.data!.docs[currentIndex]
+                                    player6: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player6FBTitle],
-                                    player7: snapshot.data!.docs[currentIndex]
+                                    player7: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player7FBTitle],
-                                    player8: snapshot.data!.docs[currentIndex]
+                                    player8: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player8FBTitle],
-                                    player9: snapshot.data!.docs[currentIndex]
+                                    player9: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player9FBTitle],
-                                    player10: snapshot.data!.docs[currentIndex]
+                                    player10: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player10FBTitle],
-                                    player11: snapshot.data!.docs[currentIndex]
+                                    player11: snapshot.data?.docs[currentIndex]
                                     [AppStrings.player11FBTitle],
                                   ),
                                 );

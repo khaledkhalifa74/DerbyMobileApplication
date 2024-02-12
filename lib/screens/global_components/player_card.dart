@@ -28,19 +28,20 @@ class PlayerCard extends StatelessWidget {
               height: MediaQuery.of(context).size.width * 0.7,
               decoration: ShapeDecoration(
                 image: DecorationImage(
-                  image: AssetImage(keyColor == 'red'
+                  image: AssetImage(keyColor == '1'
                       ? kRedPlayerBG
-                      : keyColor == 'blue'
+                      : keyColor == '2'
                           ? kBluePlayerBG
-                          : keyColor == 'yellow'
+                          : keyColor == '3'
                               ? kYellowPlayerBG
-                              : keyColor == 'white'
+                              : keyColor == '4'
                                   ? kWhitePlayerBG
-                                  : keyColor == 'babyBlue'
+                                  : keyColor == '5'
                                       ? kBabyBluePlayerBG
-                                      : keyColor == 'darkRed'
+                                      : keyColor == '6'
                                           ? kDarkRedPlayerBG
-                                          : kRedPlayerBG),
+                                          : kRedPlayerBG,
+                  ),
                   fit: BoxFit.cover,
                 ),
                 shape: RoundedRectangleBorder(

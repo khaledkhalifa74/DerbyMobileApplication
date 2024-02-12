@@ -42,7 +42,7 @@ class _AuctionHomeState extends State<AuctionHome> {
                 : hard.snapshots(),
         builder: (context, snapshot) {
           if (InternetConnection.hasInternet == true){
-            if (snapshot.hasData) {
+            if (snapshot.hasData && snapshot.data != null) {
               return Scaffold(
                 backgroundColor: kPrimaryColor,
                 body: Column(

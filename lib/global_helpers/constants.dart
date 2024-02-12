@@ -167,10 +167,6 @@ class AppStrings {
   static const String hardStopWatchCollection = 'hardStopWatch';
 
   static const String soundCollection = 'sound';
-  static const String soundDoc = '7yYXa9xJumbtDSKF46I0';
-  static const String easySoundCollection = 'easySound';
-  static const String midSoundCollection = 'midSound';
-  static const String hardSoundCollection = 'hardSound';
 
   static const String careerCollection = 'career';
   static const String careerDoc = 'I32kNlHPqX49DVrdNwz0';
@@ -327,20 +323,8 @@ class FireBaseReferences{
       .collection(AppStrings.hardWhoIamCollection);
 
 
-  static CollectionReference kEasySoundRef = FirebaseFirestore.instance
-      .collection(AppStrings.soundCollection)
-      .doc(AppStrings.soundDoc)
-      .collection(AppStrings.easySoundCollection);
-
-  static CollectionReference kMidSoundRef = FirebaseFirestore.instance
-      .collection(AppStrings.soundCollection)
-      .doc(AppStrings.soundDoc)
-      .collection(AppStrings.midSoundCollection);
-
-  static CollectionReference kHardSoundRef = FirebaseFirestore.instance
-      .collection(AppStrings.soundCollection)
-      .doc(AppStrings.soundDoc)
-      .collection(AppStrings.hardSoundCollection);
+  static CollectionReference kSoundRef = FirebaseFirestore.instance
+      .collection(AppStrings.soundCollection);
 
 
   static CollectionReference kEasyCareerRef = FirebaseFirestore.instance
